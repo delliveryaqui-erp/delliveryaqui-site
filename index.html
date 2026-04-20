@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dellivery Aqui — ERP para Restaurantes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange-50: #FFF5EC;
+      --orange-100: #FFE4C4;
+      --orange-200: #FFCA8A;
+      --orange-300: #FFA940;
+      --orange-400: #FF8C00;
+      --orange-500: #E67300;
+      --orange-600: #BF5A00;
+      --orange-700: #8C3F00;
+      --orange-800: #5C2800;
+      --dark: #1A0F00;
+      --dark-2: #2D1A00;
+      --dark-3: #3D2400;
+      --text-muted: #8C6A40;
+      --cream: #FFF8F0;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ——— NAV ——— */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 6%;
+      background: rgba(255,248,240,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,140,0,0.12);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 40px rgba(230,115,0,0.12); }
+
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--orange-400), var(--orange-600));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .logo-text span { color: var(--orange-500); }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+      color: var(--dark); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--orange-500); }
+
+    .nav-cta {
+      background: var(--orange-500);
+      color: white !important;
+      padding: 10px 24px !important;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--orange-600) !important; transform: translateY(-1px); }
+
+    /* ——— HERO ——— */
+    .hero {
+      min-height: 100vh;
+      padding: 140px 6% 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,169,64,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -100px; left: -100px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,140,0,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange-50);
+      border: 1px solid var(--orange-200);
+      color: var(--orange-600);
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-label::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--orange-500);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(44px, 5.5vw, 76px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    h1 .accent {
+      color: var(--orange-500);
+      position: relative;
+      display: inline-block;
+    }
+
+    h1 .accent::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--orange-400), var(--orange-200));
+      border-radius: 2px;
+    }
+
+    .hero-desc {
+      font-size: 18px; font-weight: 300; line-height: 1.7;
+      color: #5C3D1A;
+      max-width: 480px;
+      margin-bottom: 40px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 16px; align-items: center;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--orange-500);
+      color: white;
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 15px; font-weight: 600;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 8px 30px rgba(230,115,0,0.35);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--orange-600); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(230,115,0,0.45); }
+
+    .btn-ghost {
+      color: var(--dark);
+      font-size: 15px; font-weight: 500;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--orange-500); }
+    .btn-ghost .arrow { transition: transform 0.2s; }
+    .btn-ghost:hover .arrow { transform: translateX(4px); }
+
+    .hero-stats {
+      display: flex; gap: 36px;
+      margin-top: 56px;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .stat-item {}
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; font-weight: 700;
+      color: var(--orange-500);
+      line-height: 1;
+    }
+    .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .hero-img-main {
+      width: 100%; aspect-ratio: 4/3;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(140,63,0,0.22);
+      position: relative;
+    }
+
+    .hero-img-main img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .hero-img-main:hover img { transform: scale(1.03); }
+
+    .hero-img-main::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(26,15,0,0.5) 100%);
+    }
+
+    .hero-badge {
+      position: absolute; bottom: 24px; left: 24px; z-index: 2;
+      background: white;
+      border-radius: 16px;
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    }
+    .hero-badge-icon {
+      width: 40px; height: 40px;
+      background: var(--orange-50);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .hero-badge-text { font-size: 13px; font-weight: 600; color: var(--dark); }
+    .hero-badge-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    .hero-pill {
+      position: absolute; top: -16px; right: 20px;
+      background: linear-gradient(135deg, var(--orange-400), var(--orange-600));
+      color: white; border-radius: 100px;
+      padding: 10px 20px; font-size: 13px; font-weight: 600;
+      box-shadow: 0 8px 24px rgba(230,115,0,0.4);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero-pill-2 {
+      position: absolute; bottom: 100px; right: -20px;
+      background: white;
+      border-radius: 16px;
+      padding: 12px 16px;
+      font-size: 12px; font-weight: 600;
+      color: var(--dark);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      animation: float 5s 1s ease-in-out infinite;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-pill-2 .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ——— SECTION COMMON ——— */
+    section { padding: 100px 6%; }
+
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--orange-500);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700; line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 17px; font-weight: 300; line-height: 1.7;
+      color: #5C3D1A; max-width: 520px;
+    }
+
+    /* ——— LOGOS BAR ——— */
+    .logos-bar {
+      padding: 48px 6%;
+      background: var(--orange-50);
+      border-top: 1px solid var(--orange-100);
+      border-bottom: 1px solid var(--orange-100);
+    }
+    .logos-bar p {
+      text-align: center; font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--text-muted); margin-bottom: 28px;
+    }
+    .logos-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .brand-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--orange-300);
+      letter-spacing: -0.02em;
+      transition: color 0.2s;
+      cursor: default;
+    }
+    .brand-logo:hover { color: var(--orange-500); }
+
+    /* ——— SERVICES ——— */
+    #servicos { background: white; }
+
+    .services-header {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: end;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid var(--orange-100);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--orange-300);
+      box-shadow: 0 20px 60px rgba(230,115,0,0.12);
+    }
+
+    .service-card.featured {
+      background: linear-gradient(145deg, var(--orange-500), var(--orange-700));
+      border-color: transparent;
+      color: white;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 120px; height: 120px;
+      border-radius: 0 0 0 120px;
+      background: rgba(255,140,0,0.06);
+      pointer-events: none;
+    }
+    .service-card.featured::before { background: rgba(255,255,255,0.06); }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: var(--orange-100);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      transition: transform 0.2s;
+    }
+    .service-card:hover .service-icon { transform: scale(1.1); }
+    .service-card.featured .service-icon { background: rgba(255,255,255,0.2); }
+
+    .service-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+    .service-card.featured .service-title { color: white; }
+
+    .service-desc {
+      font-size: 14px; line-height: 1.65;
+      color: var(--text-muted);
+    }
+    .service-card.featured .service-desc { color: rgba(255,255,255,0.8); }
+
+    .service-tag {
+      display: inline-block; margin-top: 20px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange-600);
+      background: var(--orange-100);
+      padding: 4px 12px; border-radius: 100px;
+    }
+    .service-card.featured .service-tag { background: rgba(255,255,255,0.2); color: white; }
+
+    /* ——— HOW IT WORKS ——— */
+    #como-funciona {
+      background: var(--dark);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    #como-funciona::before {
+      content: '';
+      position: absolute; top: -300px; left: 50%;
+      transform: translateX(-50%);
+      width: 800px; height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,140,0,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    #como-funciona .section-title { color: white; }
+    #como-funciona .section-desc { color: rgba(255,248,240,0.6); }
+
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 24px; margin-top: 64px;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute; top: 40px; left: calc(12.5% + 16px); right: calc(12.5% + 16px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--orange-500), transparent);
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 32px 24px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,140,0,0.12);
+      transition: all 0.3s;
+    }
+    .step-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,140,0,0.3); transform: translateY(-4px); }
+
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--orange-400), var(--orange-600));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700; color: white;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 24px rgba(230,115,0,0.4);
+    }
+
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 700; color: white;
+      margin-bottom: 10px;
+    }
+
+    .step-desc { font-size: 13px; line-height: 1.6; color: rgba(255,248,240,0.55); }
+
+    /* ——— DASHBOARD SHOWCASE ——— */
+    #dashboard {
+      background: white;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .dashboard-img {
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 40px 80px rgba(140,63,0,0.15);
+      position: relative;
+    }
+    .dashboard-img img {
+      width: 100%; display: block;
+    }
+
+    .feature-list { list-style: none; margin-top: 32px; display: flex; flex-direction: column; gap: 16px; }
+    .feature-item {
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .feature-check {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--orange-100);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+      color: var(--orange-600);
+      margin-top: 1px;
+    }
+    .feature-text-title { font-size: 15px; font-weight: 600; color: var(--dark); }
+    .feature-text-desc { font-size: 13px; color: var(--text-muted); margin-top: 2px; line-height: 1.5; }
+
+    /* ——— PRICING ——— */
+    #precos { background: var(--cream); }
+
+    .pricing-header { text-align: center; margin-bottom: 64px; }
+    .pricing-header .section-desc { max-width: 420px; margin: 0 auto; text-align: center; }
+
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; max-width: 960px; margin: 0 auto;
+    }
+
+    .plan-card {
+      background: white;
+      border-radius: 24px;
+      padding: 36px 32px;
+      border: 1px solid var(--orange-100);
+      position: relative;
+      transition: all 0.3s;
+    }
+    .plan-card:hover { box-shadow: 0 20px 60px rgba(230,115,0,0.1); transform: translateY(-4px); }
+
+    .plan-card.popular {
+      background: linear-gradient(160deg, var(--orange-500), var(--orange-700));
+      border-color: transparent;
+      transform: scale(1.04);
+    }
+    .plan-card.popular:hover { transform: scale(1.04) translateY(-4px); }
+
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--orange-300);
+      color: var(--orange-800);
+      font-size: 11px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      padding: 4px 18px; border-radius: 100px;
+    }
+
+    .plan-name {
+      font-size: 14px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .plan-card.popular .plan-name { color: rgba(255,255,255,0.7); }
+
+    .plan-price {
+      display: flex; align-items: baseline; gap: 4px;
+      margin-bottom: 4px;
+    }
+    .plan-currency { font-size: 20px; font-weight: 600; color: var(--dark); margin-top: 6px; }
+    .plan-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 52px; font-weight: 700; color: var(--dark); line-height: 1;
+    }
+    .plan-card.popular .plan-currency,
+    .plan-card.popular .plan-amount { color: white; }
+    .plan-period { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+    .plan-card.popular .plan-period { color: rgba(255,255,255,0.6); }
+
+    .plan-divider {
+      height: 1px; background: var(--orange-100);
+      margin: 24px 0;
+    }
+    .plan-card.popular .plan-divider { background: rgba(255,255,255,0.15); }
+
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .plan-feature {
+      display: flex; gap: 10px; align-items: center;
+      font-size: 14px; color: #5C3D1A;
+    }
+    .plan-card.popular .plan-feature { color: rgba(255,255,255,0.85); }
+    .plan-feature::before {
+      content: '✓';
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--orange-100);
+      color: var(--orange-600);
+      font-size: 11px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .plan-card.popular .plan-feature::before { background: rgba(255,255,255,0.2); color: white; }
+
+    .plan-btn {
+      width: 100%; padding: 14px;
+      border-radius: 100px;
+      font-size: 15px; font-weight: 600;
+      text-align: center;
+      border: 2px solid var(--orange-400);
+      background: transparent;
+      color: var(--orange-500);
+      cursor: pointer; text-decoration: none;
+      display: block; transition: all 0.2s;
+    }
+    .plan-btn:hover { background: var(--orange-500); color: white; }
+    .plan-card.popular .plan-btn {
+      background: white; color: var(--orange-600);
+      border-color: transparent;
+    }
+    .plan-card.popular .plan-btn:hover { background: var(--orange-100); }
+
+    /* ——— TESTIMONIALS ——— */
+    #depoimentos { background: white; }
+
+    .testimonials-header { margin-bottom: 56px; }
+
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid var(--orange-100);
+      transition: all 0.3s;
+    }
+    .testimonial-card:hover { box-shadow: 0 16px 48px rgba(230,115,0,0.1); transform: translateY(-4px); border-color: var(--orange-200); }
+
+    .stars { display: flex; gap: 4px; margin-bottom: 18px; }
+    .star { color: var(--orange-400); font-size: 16px; }
+
+    .testimonial-text {
+      font-size: 15px; line-height: 1.7;
+      color: #3D2400; margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      overflow: hidden; background: var(--orange-200);
+      flex-shrink: 0;
+    }
+    .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .author-name { font-size: 14px; font-weight: 600; color: var(--dark); }
+    .author-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ——— CTA ——— */
+    #contato {
+      background: linear-gradient(135deg, var(--orange-600), var(--orange-800));
+      padding: 100px 6%;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #contato::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    #contato .section-title { color: white; font-size: clamp(36px, 4vw, 60px); }
+    #contato .section-desc { color: rgba(255,255,255,0.7); margin: 0 auto 40px; text-align: center; }
+    #contato .section-label { color: var(--orange-200); }
+
+    .cta-actions {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    }
+
+    .btn-white {
+      background: white; color: var(--orange-700);
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 15px; font-weight: 700;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
+
+    .btn-outline-white {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white; padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 15px; font-weight: 600;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.25s; background: transparent;
+    }
+    .btn-outline-white:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+    /* ——— FOOTER ——— */
+    footer {
+      background: var(--dark);
+      color: rgba(255,248,240,0.7);
+      padding: 64px 6% 32px;
+    }
+
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+
+    .footer-brand .logo-text { color: white; }
+    .footer-desc {
+      font-size: 14px; line-height: 1.65;
+      color: rgba(255,248,240,0.5);
+      margin-top: 12px; max-width: 280px;
+    }
+
+    .footer-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange-400); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 14px; color: rgba(255,248,240,0.55); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--orange-300); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: rgba(255,248,240,0.35);
+    }
+    .footer-bottom a { color: var(--orange-400); text-decoration: none; }
+
+    /* ——— RESPONSIVE ——— */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+      #dashboard { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .services-header { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 5%; }
+      .nav-links { display: none; }
+      section { padding: 72px 5%; }
+      .hero { padding: 120px 5% 60px; }
+      .hero-stats { gap: 24px; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .plan-card.popular { transform: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+
+    /* scroll animations */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo">
+    <div class="logo-icon">🍽️</div>
+    <div class="logo-text">Dellivery <span>Aqui</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#como-funciona">Como Funciona</a></li>
+    <li><a href="#precos">Preços</a></li>
+    <li><a href="#depoimentos">Depoimentos</a></li>
+    <li><a href="#contato" class="nav-cta">Começar Grátis</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-content">
+    <div class="hero-label">🚀 ERP Inteligente para Restaurantes</div>
+    <h1>Gerencie seu<br>restaurante<br>com <span class="accent">inteligência</span></h1>
+    <p class="hero-desc">
+      Do pedido à entrega, do estoque ao financeiro — tudo em uma plataforma completa criada para impulsionar o crescimento do seu negócio.
+    </p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">
+        Teste 14 dias grátis
+        <span>→</span>
+      </a>
+      <a href="#como-funciona" class="btn-ghost">
+        Ver como funciona <span class="arrow">→</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">2.800+</div>
+        <div class="stat-label">Restaurantes ativos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">R$890M</div>
+        <div class="stat-label">Em vendas gerenciadas</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Satisfação dos clientes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-pill">📈 +42% de eficiência</div>
+    <div class="hero-img-main">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Restaurante moderno" />
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-icon">📊</div>
+      <div>
+        <div class="hero-badge-text">Faturamento hoje</div>
+        <div class="hero-badge-sub">R$ 4.820 • 78 pedidos</div>
+      </div>
+    </div>
+    <div class="hero-pill-2">
+      <div class="dot"></div>
+      Sistema online agora
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS BAR -->
+<div class="logos-bar">
+  <p>Confiado por restaurantes de todo o Brasil</p>
+  <div class="logos-row">
+    <div class="brand-logo">Sabor & Arte</div>
+    <div class="brand-logo">Cantina Real</div>
+    <div class="brand-logo">BurgerHouse</div>
+    <div class="brand-logo">Sushi Prime</div>
+    <div class="brand-logo">Pizzaria Nonna</div>
+    <div class="brand-logo">Café Gourmet</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="servicos">
+  <div class="services-header reveal">
+    <div>
+      <div class="section-label">Nossos Serviços</div>
+      <h2 class="section-title">Tudo que o seu restaurante precisa</h2>
+    </div>
+    <p class="section-desc">
+      Uma solução completa com módulos integrados que se adaptam ao tamanho e necessidade do seu negócio.
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">📋</div>
+      <div class="service-title">Gestão de Pedidos</div>
+      <div class="service-desc">Centralize pedidos do salão, delivery e aplicativos em um só painel. Integração com iFood, Rappi e 99Food.</div>
+      <span class="service-tag">Tempo Real</span>
+    </div>
+    <div class="service-card featured reveal">
+      <div class="service-icon">💹</div>
+      <div class="service-title">Controle Financeiro</div>
+      <div class="service-desc">DRE automático, fluxo de caixa, contas a pagar e receber, conciliação bancária e relatórios gerenciais completos.</div>
+      <span class="service-tag">Mais Popular</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📦</div>
+      <div class="service-title">Estoque Inteligente</div>
+      <div class="service-desc">Controle de insumos com baixa automática, alertas de reposição, custo por prato e prevenção de desperdícios.</div>
+      <span class="service-tag">Automático</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">👥</div>
+      <div class="service-title">Gestão de Equipe</div>
+      <div class="service-desc">Escalas de trabalho, ponto eletrônico, folha de pagamento integrada e gestão de comissões simplificada.</div>
+      <span class="service-tag">RH Digital</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">📱</div>
+      <div class="service-title">App para Clientes</div>
+      <div class="service-desc">Cardápio digital, programa de fidelidade, pedidos online com sua marca e notificações push personalizadas.</div>
+      <span class="service-tag">Marca Própria</span>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon">🧾</div>
+      <div class="service-title">Fiscal & NF-e</div>
+      <div class="service-desc">Emissão automática de NF-e, NFC-e, SAT, integração com contabilidade e obrigações fiscais simplificadas.</div>
+      <span class="service-tag">100% Compliance</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="como-funciona">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-label">Processo Simples</div>
+    <h2 class="section-title">Como o Dellivery Aqui funciona</h2>
+    <p class="section-desc" style="margin: 0 auto; text-align:center;">Em menos de 24 horas você já tem seu restaurante operando com inteligência e eficiência.</p>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card reveal">
+      <div class="step-num">1</div>
+      <div class="step-title">Cadastro Rápido</div>
+      <div class="step-desc">Crie sua conta em minutos. Sem burocracia, sem longa implementação. Configure seu restaurante de forma simples e intuitiva.</div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">2</div>
+      <div class="step-title">Importação de Dados</div>
+      <div class="step-desc">Importe seu cardápio, estoque e cadastros do sistema anterior. Nossa equipe auxilia na migração sem perda de dados.</div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">3</div>
+      <div class="step-title">Treinamento Incluído</div>
+      <div class="step-desc">Tutoriais interativos e suporte humano para treinar toda a equipe. Onboarding guiado em até 48 horas.</div>
+    </div>
+    <div class="step-card reveal">
+      <div class="step-num">4</div>
+      <div class="step-title">Operação Completa</div>
+      <div class="step-desc">Seu restaurante 100% digital. Monitore tudo em tempo real pelo celular ou computador, de qualquer lugar.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD SHOWCASE -->
+<section id="dashboard">
+  <div class="dashboard-img reveal">
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80" alt="Dashboard do sistema" style="border-radius:24px;" />
+  </div>
+  <div class="reveal">
+    <div class="section-label">Dashboard Completo</div>
+    <h2 class="section-title">Tudo em um único painel de controle</h2>
+    <p class="section-desc">Visualize o desempenho do seu restaurante com gráficos em tempo real, alertas inteligentes e relatórios detalhados.</p>
+    <ul class="feature-list">
+      <li class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <div class="feature-text-title">Relatórios de Vendas em Tempo Real</div>
+          <div class="feature-text-desc">Acompanhe faturamento por hora, dia, semana e mês com comparativos automáticos.</div>
+        </div>
+      </li>
+      <li class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <div class="feature-text-title">Alertas Inteligentes de Estoque</div>
+          <div class="feature-text-desc">Notificações automáticas quando insumos atingem ponto crítico de reposição.</div>
+        </div>
+      </li>
+      <li class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <div class="feature-text-title">Análise de Pratos e Rentabilidade</div>
+          <div class="feature-text-desc">Identifique os pratos mais lucrativos e otimize seu cardápio com dados precisos.</div>
+        </div>
+      </li>
+      <li class="feature-item">
+        <div class="feature-check">✓</div>
+        <div>
+          <div class="feature-text-title">App Mobile para Gestores</div>
+          <div class="feature-text-desc">Acesse o painel completo pelo celular. Gerencie seu restaurante de onde estiver.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="precos">
+  <div class="pricing-header reveal">
+    <div class="section-label">Planos e Preços</div>
+    <h2 class="section-title">Invista no crescimento do seu restaurante</h2>
+    <p class="section-desc">Planos flexíveis que crescem junto com o seu negócio. Sem taxa de adesão, sem multa de cancelamento.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <div class="plan-card reveal">
+      <div class="plan-name">Essencial</div>
+      <div class="plan-price">
+        <span class="plan-currency">R$</span>
+        <span class="plan-amount">197</span>
+      </div>
+      <div class="plan-period">por mês • 1 estabelecimento</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li class="plan-feature">PDV e gestão de pedidos</li>
+        <li class="plan-feature">Cardápio digital</li>
+        <li class="plan-feature">Controle de estoque básico</li>
+        <li class="plan-feature">Emissão de NFC-e / SAT</li>
+        <li class="plan-feature">Relatórios essenciais</li>
+        <li class="plan-feature">Suporte por chat</li>
+      </ul>
+      <a href="#contato" class="plan-btn">Começar agora</a>
+    </div>
+
+    <div class="plan-card popular reveal">
+      <div class="popular-badge">⭐ Mais Escolhido</div>
+      <div class="plan-name">Profissional</div>
+      <div class="plan-price">
+        <span class="plan-currency">R$</span>
+        <span class="plan-amount">397</span>
+      </div>
+      <div class="plan-period">por mês • até 3 estabelecimentos</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li class="plan-feature">Tudo do Essencial</li>
+        <li class="plan-feature">Financeiro completo + DRE</li>
+        <li class="plan-feature">Integrações iFood / Rappi</li>
+        <li class="plan-feature">App fidelidade próprio</li>
+        <li class="plan-feature">Gestão de equipe e ponto</li>
+        <li class="plan-feature">Suporte prioritário 7 dias</li>
+      </ul>
+      <a href="#contato" class="plan-btn">Começar agora</a>
+    </div>
+
+    <div class="plan-card reveal">
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-price">
+        <span class="plan-currency">R$</span>
+        <span class="plan-amount">797</span>
+      </div>
+      <div class="plan-period">por mês • ilimitado</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li class="plan-feature">Tudo do Profissional</li>
+        <li class="plan-feature">Unidades ilimitadas</li>
+        <li class="plan-feature">API e integrações avançadas</li>
+        <li class="plan-feature">BI e dashboards customizados</li>
+        <li class="plan-feature">Gerente de conta dedicado</li>
+        <li class="plan-feature">Suporte 24h / SLA garantido</li>
+      </ul>
+      <a href="#contato" class="plan-btn">Falar com vendas</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="depoimentos">
+  <div class="testimonials-header reveal">
+    <div class="section-label">Depoimentos</div>
+    <h2 class="section-title">O que nossos clientes dizem</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testimonial-text">"Reduzi o desperdício em 35% no primeiro mês. O controle de estoque do Dellivery Aqui é simplesmente o melhor que já usei. Minha operação ficou muito mais profissional."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Ana Lima" />
+        </div>
+        <div>
+          <div class="author-name">Ana Lima</div>
+          <div class="author-role">Proprietária · Cantina Bella Napoli, SP</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testimonial-text">"A integração com iFood foi um divisor de águas. Todos os pedidos agora caem direto no sistema, sem erros de digitação. O tempo de preparo caiu 20%."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Carlos Mendes" />
+        </div>
+        <div>
+          <div class="author-name">Carlos Mendes</div>
+          <div class="author-role">Sócio-fundador · BurgerFactory, RJ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonial-card reveal">
+      <div class="stars">
+        <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+      </div>
+      <p class="testimonial-text">"Gerencio 5 unidades pelo celular. O Dellivery Aqui me dá visibilidade total do negócio em tempo real. O suporte é incrível — respondem em minutos."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Fernanda Costa" />
+        </div>
+        <div>
+          <div class="author-name">Fernanda Costa</div>
+          <div class="author-role">CEO · Grupo Sabores, MG</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contato">
+  <div class="reveal">
+    <div class="section-label">Comece Hoje</div>
+    <h2 class="section-title">Pronto para transformar<br>seu restaurante?</h2>
+    <p class="section-desc">14 dias de teste gratuito. Sem cartão de crédito. Cancele quando quiser.<br>Nossa equipe estará com você em cada etapa.</p>
+    <div class="cta-actions">
+      <a href="#" class="btn-white">🚀 Começar teste gratuito</a>
+      <a href="https://wa.me/5511999999999" target="_blank" class="btn-outline-white">💬 Falar no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">
+        <div class="logo-icon">🍽️</div>
+        <div class="logo-text">Dellivery <span>Aqui</span></div>
+      </div>
+      <p class="footer-desc">O ERP mais completo para restaurantes, lanchonetes, pizzarias e redes de alimentação do Brasil.</p>
+    </div>
+    <div>
+      <div class="footer-title">Produto</div>
+      <ul class="footer-links">
+        <li><a href="#">Funcionalidades</a></li>
+        <li><a href="#">Integrações</a></li>
+        <li><a href="#">API</a></li>
+        <li><a href="#">Novidades</a></li>
+        <li><a href="#">Roadmap</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Empresa</div>
+      <ul class="footer-links">
+        <li><a href="#">Sobre nós</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Parceiros</a></li>
+        <li><a href="#">Carreiras</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-title">Suporte</div>
+      <ul class="footer-links">
+        <li><a href="#">Central de Ajuda</a></li>
+        <li><a href="#">Tutoriais</a></li>
+        <li><a href="#">Status do Sistema</a></li>
+        <li><a href="#">Comunidade</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Dellivery Aqui. Todos os direitos reservados.</span>
+    <span><a href="#">Privacidade</a> · <a href="#">Termos de Uso</a> · <a href="#">LGPD</a></span>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const siblings = [...entry.target.parentElement.querySelectorAll('.reveal')];
+        const idx = siblings.indexOf(entry.target);
+        entry.target.style.transitionDelay = `${idx * 0.08}s`;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Smooth scroll for anchors
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
