@@ -45,7 +45,26 @@ O projeto é uma aplicação web estática. Para visualizar:
 2. Abra o arquivo `index.html` em qualquer navegador moderno.
 3. Para uma experiência melhor de desenvolvimento, utilize extensões como o "Live Server" no VS Code.
 
-## ⚖️ Conformidade Legal
+## 🚀 Deployment (GitHub Pages)
+
+O projeto está configurado para ser hospedado gratuitamente no **GitHub Pages**:
+
+1. Crie um novo repositório no seu GitHub.
+2. Faça o push do código para o repositório:
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git branch -M main
+   git remote add origin https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+   git push -u origin main
+   ```
+3. No GitHub, vá em **Settings** > **Pages**.
+4. Em **Branch**, selecione `main` e a pasta `/(root)`.
+5. Clique em **Save**.
+6. O site estará disponível em `https://seu-usuario.github.io/seu-repositorio/`.
+
+> **Nota:** O arquivo `.nojekyll` presente na raiz garante que o GitHub Pages sirva os arquivos CSS e JS corretamente, sem processamento adicional.
+
 
 O site conta com páginas dedicadas para transparência jurídica:
 - **LGPD:** Documentação sobre proteção de dados e direitos do usuário.
