@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Hub | Dellivery Aqui</title>
+    <meta name="description" content="Growth Hub — Centro de marketing, performance e conversão da Dellivery Aqui.">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="../assets/deliveryaqui.favicon.png">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../assets/develliveryaquilogo.png" alt="Dellivery Aqui" class="logo">
+                <div class="logo-block">
+                    <span class="logo-text">Growth Hub</span>
+                    <span class="logo-sub">Marketing &amp; Conversão</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <span class="nav-section">Operação</span>
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i class="ph ph-squares-four"></i>
+                    <span>Visão Geral</span>
+                </a>
+                <a href="#" class="nav-item" data-page="analytics">
+                    <i class="ph ph-chart-line-up"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item" data-page="campaigns">
+                    <i class="ph ph-megaphone"></i>
+                    <span>Campanhas</span>
+                </a>
+                <a href="#" class="nav-item" data-page="audience">
+                    <i class="ph ph-users-three"></i>
+                    <span>Público</span>
+                </a>
+                <span class="nav-section">Sistema</span>
+                <a href="#" class="nav-item" data-page="settings">
+                    <i class="ph ph-gear-six"></i>
+                    <span>Configurações</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="../index.html" class="back-link">
+                    <i class="ph ph-arrow-left"></i>
+                    <span>Voltar ao Site</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <h1 id="page-title">Visão Geral</h1>
+                    <p id="page-subtitle" class="page-subtitle">Acompanhe o desempenho do seu marketing em tempo real.</p>
+                </div>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <i class="ph ph-magnifying-glass"></i>
+                        <input type="text" placeholder="Buscar campanhas, clientes...">
+                    </div>
+                    <button class="icon-btn" title="Notificações">
+                        <i class="ph ph-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+                    <button class="btn btn-primary" id="open-new-campaign">
+                        <i class="ph ph-plus"></i> Nova Campanha
+                    </button>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin+Dellivery&background=6366f1&color=fff" alt="User Profile">
+                    </div>
+                </div>
+            </header>
+            <div id="app-content" class="content-container">
+                <!-- Content injected via JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- New Campaign Modal -->
+    <div class="modal-overlay" id="new-campaign-modal" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="new-campaign-title">
+            <header class="modal-header">
+                <div>
+                    <h2 id="new-campaign-title">Criar nova campanha</h2>
+                    <p>Defina os parâmetros e publique em poucos minutos.</p>
+                </div>
+                <button class="icon-btn modal-close" data-close-modal aria-label="Fechar">
+                    <i class="ph ph-x"></i>
+                </button>
+            </header>
+
+            <div class="modal-stepper">
+                <div class="step active"><span>1</span> Detalhes</div>
+                <div class="step-line"></div>
+                <div class="step"><span>2</span> Público</div>
+                <div class="step-line"></div>
+                <div class="step"><span>3</span> Orçamento</div>
+            </div>
+
+            <form id="new-campaign-form" class="modal-body" novalidate>
+                <div class="form-grid">
+                    <div class="form-field span-2">
+                        <label for="cmp-name">Nome da campanha</label>
+                        <input type="text" id="cmp-name" name="name" placeholder="Ex.: Promo Dia dos Namorados" required>
+                        <span class="form-error" data-error-for="name">Informe um nome.</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="cmp-platform">Plataforma</label>
+                        <select id="cmp-platform" name="platform" required>
+                            <option value="">Selecione...</option>
+                            <option value="Meta Ads">Meta Ads (Facebook / Instagram)</option>
+                            <option value="Google Ads">Google Ads</option>
+                            <option value="TikTok Ads">TikTok Ads</option>
+                            <option value="WhatsApp">WhatsApp Business</option>
+                            <option value="E-mail">E-mail Marketing</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="cmp-objective">Objetivo</label>
+                        <select id="cmp-objective" name="objective" required>
+                            <option value="">Selecione...</option>
+                            <option value="Conversão">Conversão (vendas)</option>
+                            <option value="Tráfego">Tráfego para o cardápio</option>
+                            <option value="Reconhecimento">Reconhecimento de marca</option>
+                            <option value="Engajamento">Engajamento</option>
+                            <option value="Reengajamento">Reengajamento (retargeting)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="cmp-budget">Orçamento diário (R$)</label>
+                        <input type="number" id="cmp-budget" name="budget" placeholder="50" min="10" step="10" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="cmp-audience">Público-alvo</label>
+                        <select id="cmp-audience" name="audience" required>
+                            <option value="">Selecione...</option>
+                            <option value="Clientes Ativos">Clientes ativos</option>
+                            <option value="Clientes em Risco">Clientes em risco</option>
+                            <option value="Lookalike VIPs">Lookalike de VIPs</option>
+                            <option value="Geográfico 5km">Geográfico — Raio 5km</option>
+                            <option value="Carrinho Abandonado">Carrinho abandonado</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="cmp-start">Início</label>
+                        <input type="date" id="cmp-start" name="start" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="cmp-end">Término</label>
+                        <input type="date" id="cmp-end" name="end">
+                    </div>
+
+                    <div class="form-field span-2">
+                        <label for="cmp-message">Mensagem / criativo</label>
+                        <textarea id="cmp-message" name="message" rows="3" placeholder="Ex.: Hoje a pizza grande sai por R$ 39,90. Peça pelo app!"></textarea>
+                    </div>
+
+                    <div class="form-field span-2">
+                        <span class="form-label">Status inicial</span>
+                        <div class="radio-group">
+                            <label class="radio-pill">
+                                <input type="radio" name="status" value="Ativa" checked>
+                                <span><i class="ph ph-play-circle"></i> Ativar agora</span>
+                            </label>
+                            <label class="radio-pill">
+                                <input type="radio" name="status" value="Rascunho">
+                                <span><i class="ph ph-floppy-disk"></i> Salvar rascunho</span>
+                            </label>
+                            <label class="radio-pill">
+                                <input type="radio" name="status" value="Agendada">
+                                <span><i class="ph ph-calendar-blank"></i> Agendar</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <footer class="modal-footer">
+                <button type="button" class="btn btn-outline" data-close-modal>Cancelar</button>
+                <button type="submit" form="new-campaign-form" class="btn btn-primary">
+                    <i class="ph ph-rocket-launch"></i> Criar campanha
+                </button>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <!-- Chart.js for Mocked Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>
