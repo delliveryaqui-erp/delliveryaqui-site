@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FidelizaCard | Dellivery Aqui</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="view-container">
+        
+        <!-- PÁGINA 1: DAR SELO -->
+        <div id="page-1" class="view-page active">
+            <header class="app-header">
+                <img src="../../assets/images/logo.png" alt="Logo" class="app-logo">
+                <div class="icon" style="background:#fee2e2; color:#ef4444;">
+                    <i class="ph ph-star"></i>
+                </div>
+                <div>
+                    <h1>FidelizaCard</h1>
+                    <p>Selo digital rápido no balcão.</p>
+                </div>
+            </header>
+
+            <div class="tabs mt-4">
+                <button class="tab active">Dar Selo</button>
+                <button class="tab" data-navigate="page-3">Dashboard</button>
+                <button class="tab" data-navigate="page-2">Configurar</button>
+            </div>
+
+            <div class="card scanner-card mt-4 text-center">
+                <div class="scanner-box">
+                    <i class="ph ph-qr-code"></i>
+                    <p>Aproxime o QR Code do cliente</p>
+                </div>
+                
+                <div class="divider"><span>ou</span></div>
+                
+                <div class="form-group text-left">
+                    <label>Telefone do Cliente</label>
+                    <div class="input-with-btn">
+                        <input type="tel" placeholder="(11) 90000-0000" id="telefone-cliente">
+                        <button class="btn btn-primary" id="btn-dar-selo">Conceder</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="selo-success" class="selo-success hidden">
+                <div class="anim-star"><i class="ph-fill ph-star"></i></div>
+                <h3>Selo Adicionado!</h3>
+                <p>João Silva agora tem <strong>4 de 10</strong> selos.</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: CONFIGURAÇÃO -->
+        <div id="page-2" class="view-page">
+            <button class="btn-back" data-navigate="page-1"><i class="ph ph-arrow-left"></i> Voltar</button>
+            
+            <h2 class="mt-4">Regras do Cartão</h2>
+            <p class="subtitle">O que o cliente ganha ao completar?</p>
+
+            <div class="card">
+                <div class="form-group">
+                    <label>Quantos selos para ganhar?</label>
+                    <div class="stamp-selector">
+                        <button class="btn-circle">-</button>
+                        <span class="stamp-count">10</span>
+                        <button class="btn-circle">+</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Qual é o prêmio?</label>
+                    <input type="text" value="1 Pizza Marguerita Média">
+                </div>
+                
+                <div class="form-group">
+                    <label>Validade dos selos (meses)</label>
+                    <select>
+                        <option>Sem validade</option>
+                        <option>3 meses</option>
+                        <option selected>6 meses</option>
+                        <option>12 meses</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary btn-block mt-4" data-navigate="page-1">
+                    Salvar Configurações
+                </button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: DASHBOARD -->
+        <div id="page-3" class="view-page">
+            <button class="btn-back" data-navigate="page-1"><i class="ph ph-arrow-left"></i> Voltar</button>
+
+            <div class="dashboard-header mt-4">
+                <h2>Próximos de Ganhar</h2>
+                <span class="badge-count">12 clientes</span>
+            </div>
+            <p class="subtitle">Clientes a 1 selo da recompensa.</p>
+
+            <div class="customer-list">
+                <div class="customer-row">
+                    <div class="avatar">MA</div>
+                    <div class="customer-info">
+                        <strong>Mariana Almeida</strong>
+                        <span>(11) 98888-7777</span>
+                    </div>
+                    <div class="stamp-progress">
+                        <span>9/10</span>
+                        <button class="btn btn-sm btn-outline"><i class="ph ph-whatsapp-logo"></i> Avisar</button>
+                    </div>
+                </div>
+                
+                <div class="customer-row">
+                    <div class="avatar">CR</div>
+                    <div class="customer-info">
+                        <strong>Carlos Roberto</strong>
+                        <span>(11) 95555-4444</span>
+                    </div>
+                    <div class="stamp-progress">
+                        <span>9/10</span>
+                        <button class="btn btn-sm btn-outline"><i class="ph ph-whatsapp-logo"></i> Avisar</button>
+                    </div>
+                </div>
+                
+                <div class="customer-row">
+                    <div class="avatar">AP</div>
+                    <div class="customer-info">
+                        <strong>Ana Paula</strong>
+                        <span>(11) 91111-2222</span>
+                    </div>
+                    <div class="stamp-progress">
+                        <span>9/10</span>
+                        <button class="btn btn-sm btn-outline"><i class="ph ph-whatsapp-logo"></i> Avisar</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary btn-block mt-4" data-navigate="page-1">
+                Voltar para o Scanner
+            </button>
+        </div>
+
+        <a href="../../index.html" class="back-link-simple">Voltar ao site principal</a>
+    </div>
+
+    <script src="../shared.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

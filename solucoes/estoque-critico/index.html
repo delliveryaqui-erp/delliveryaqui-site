@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estoque Crítico | Dellivery Aqui</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="view-container">
+        
+        <!-- PÁGINA 1: LISTA CRÍTICA -->
+        <div id="page-1" class="view-page active">
+            <header class="app-header">
+                <img src="../../assets/images/logo.png" alt="Logo" class="app-logo">
+                <div class="icon" style="background:#fee2e2; color:#ef4444;">
+                    <i class="ph ph-warning-circle"></i>
+                </div>
+                <div>
+                    <h1>Estoque Crítico</h1>
+                    <p>Itens que podem faltar hoje.</p>
+                </div>
+            </header>
+
+            <div class="tabs mt-4">
+                <button class="tab active">Crítico</button>
+                <button class="tab" data-navigate="page-3">Histórico</button>
+            </div>
+
+            <div class="stock-list mt-4">
+                <div class="stock-card" data-item="Mussarela">
+                    <div class="s-header">
+                        <strong>Queijo Mussarela</strong>
+                        <span class="badge danger">Urgente</span>
+                    </div>
+                    <div class="s-info">
+                        <span>Atual: <strong>2kg</strong></span>
+                        <span>Mínimo: 10kg</span>
+                    </div>
+                    <div class="s-bar-bg">
+                        <div class="s-bar-fill danger" style="width: 20%;"></div>
+                    </div>
+                    <button class="btn btn-sm btn-outline mt-4" data-navigate="page-2">Repor Estoque</button>
+                </div>
+                
+                <div class="stock-card" data-item="Caixa Pizza Média">
+                    <div class="s-header">
+                        <strong>Caixa Pizza Média</strong>
+                        <span class="badge warning">Atenção</span>
+                    </div>
+                    <div class="s-info">
+                        <span>Atual: <strong>45 un</strong></span>
+                        <span>Mínimo: 100 un</span>
+                    </div>
+                    <div class="s-bar-bg">
+                        <div class="s-bar-fill warning" style="width: 45%;"></div>
+                    </div>
+                    <button class="btn btn-sm btn-outline mt-4" data-navigate="page-2">Repor Estoque</button>
+                </div>
+                
+                <div class="stock-card" data-item="Tomate">
+                    <div class="s-header">
+                        <strong>Tomate</strong>
+                        <span class="badge warning">Atenção</span>
+                    </div>
+                    <div class="s-info">
+                        <span>Atual: <strong>3kg</strong></span>
+                        <span>Mínimo: 5kg</span>
+                    </div>
+                    <div class="s-bar-bg">
+                        <div class="s-bar-fill warning" style="width: 60%;"></div>
+                    </div>
+                    <button class="btn btn-sm btn-outline mt-4" data-navigate="page-2">Repor Estoque</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: PEDIDO RÁPIDO -->
+        <div id="page-2" class="view-page">
+            <button class="btn-back" data-navigate="page-1"><i class="ph ph-arrow-left"></i> Voltar</button>
+
+            <div class="card mt-4">
+                <div class="order-header mb-4">
+                    <h2>Pedido Rápido</h2>
+                    <strong id="item-name" style="color:var(--primary); font-size:1.2rem;">Queijo Mussarela</strong>
+                </div>
+
+                <div class="form-group">
+                    <label>Fornecedor Padrão</label>
+                    <select>
+                        <option>Distribuidora Laticínios Silva</option>
+                        <option>Atacadão Central</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Quantidade a pedir</label>
+                    <div class="qty-selector">
+                        <button class="btn-circle">-</button>
+                        <input type="number" value="15" class="qty-input">
+                        <span class="qty-unit">kg</span>
+                        <button class="btn-circle">+</button>
+                    </div>
+                </div>
+                
+                <div class="info-box mt-4">
+                    <i class="ph ph-info"></i>
+                    <span>O pedido será enviado via WhatsApp para o fornecedor.</span>
+                </div>
+
+                <button class="btn btn-success btn-block mt-4" id="btn-pedir">
+                    <i class="ph ph-whatsapp-logo"></i> Enviar Pedido
+                </button>
+            </div>
+            
+            <div id="order-success" class="selo-success hidden">
+                <div class="anim-icon"><i class="ph-fill ph-check-circle" style="color:var(--success); font-size:4rem;"></i></div>
+                <h3>Pedido Enviado!</h3>
+                <p>O fornecedor já recebeu a mensagem.</p>
+                <button class="btn btn-secondary mt-4" data-navigate="page-1">Voltar ao Estoque</button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: HISTÓRICO -->
+        <div id="page-3" class="view-page">
+            <button class="btn-back" data-navigate="page-1"><i class="ph ph-arrow-left"></i> Voltar</button>
+
+            <header class="mt-4 mb-4">
+                <h2>Histórico de Entradas</h2>
+                <p class="subtitle">Últimas reposições no estoque</p>
+            </header>
+
+            <ul class="timeline">
+                <li>
+                    <div class="tl-icon success"><i class="ph ph-package"></i></div>
+                    <div class="tl-content">
+                        <strong>Farinha de Trigo (25kg)</strong>
+                        <p>Recebido de Atacadão Central</p>
+                        <span class="tl-time">Hoje, 10:30</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="tl-icon success"><i class="ph ph-package"></i></div>
+                    <div class="tl-content">
+                        <strong>Refrigerante Cola 2L (20 un)</strong>
+                        <p>Recebido de Bebidas & Cia</p>
+                        <span class="tl-time">Ontem, 16:15</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="tl-icon primary"><i class="ph ph-paper-plane-right"></i></div>
+                    <div class="tl-content">
+                        <strong>Queijo Mussarela (15kg)</strong>
+                        <p>Pedido realizado, aguardando entrega.</p>
+                        <span class="tl-time">Há 5 min</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <a href="../../index.html" class="back-link-simple">Voltar ao site principal</a>
+    </div>
+
+    <script src="../shared.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

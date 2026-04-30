@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZapOferta | Dellivery Aqui</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- Shared Styles -->
+    <link rel="stylesheet" href="../shared.css">
+    <!-- Specific Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="view-container">
+        
+        <!-- PÁGINA 1: EDITOR DA OFERTA -->
+        <div id="page-1" class="view-page active">
+            <header class="app-header">
+                <img src="../../assets/images/logo.png" alt="Logo" class="app-logo">
+                <div class="icon" style="background:#dcfce7; color:#22c55e;">
+                    <i class="ph ph-whatsapp-logo"></i>
+                </div>
+                <div>
+                    <h1>ZapOferta</h1>
+                    <p>Disparador rápido de promoções via WhatsApp.</p>
+                </div>
+            </header>
+
+            <div class="card editor-card">
+                <h2>O que você vai ofertar hoje?</h2>
+                <p class="subtitle">Crie uma mensagem chamativa e direta.</p>
+                
+                <div class="form-group">
+                    <label>Título da Oferta</label>
+                    <input type="text" id="oferta-titulo" placeholder="Ex: Pizza Grande + Guaraná">
+                </div>
+
+                <div class="form-group">
+                    <label>Preço Promocional (R$)</label>
+                    <input type="number" id="oferta-preco" placeholder="39,90" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label>Mensagem Principal</label>
+                    <textarea id="oferta-texto" rows="4" placeholder="Ex: Bateu a fome? Aproveite essa oferta exclusiva para hoje! Clique no link e peça agora."></textarea>
+                </div>
+                
+                <div class="preview-box">
+                    <strong><i class="ph ph-eye"></i> Pré-visualização da Mensagem:</strong>
+                    <div id="msg-preview" class="msg-bubble">
+                        <span class="muted">Preencha os campos para ver...</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-block mt-4" data-navigate="page-2">
+                    Continuar para Segmentação <i class="ph ph-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: SEGMENTAÇÃO -->
+        <div id="page-2" class="view-page">
+            <button class="btn-back" data-navigate="page-1"><i class="ph ph-arrow-left"></i> Voltar</button>
+            
+            <h2 class="mt-4">Para quem enviar?</h2>
+            <p class="subtitle">Selecione as listas de contatos.</p>
+
+            <div class="card list-card">
+                <label class="checkbox-row">
+                    <div class="checkbox-info">
+                        <strong>Todos os Clientes Ativos</strong>
+                        <span>Compraram nos últimos 30 dias (1.240 contatos)</span>
+                    </div>
+                    <input type="checkbox" checked>
+                </label>
+                
+                <label class="checkbox-row">
+                    <div class="checkbox-info">
+                        <strong>Carrinhos Abandonados</strong>
+                        <span>Não finalizaram a compra hoje (85 contatos)</span>
+                    </div>
+                    <input type="checkbox">
+                </label>
+                
+                <label class="checkbox-row">
+                    <div class="checkbox-info">
+                        <strong>Clientes VIPs</strong>
+                        <span>Mais de 5 pedidos no mês (312 contatos)</span>
+                    </div>
+                    <input type="checkbox">
+                </label>
+                
+                <label class="checkbox-row">
+                    <div class="checkbox-info">
+                        <strong>Inativos em Risco</strong>
+                        <span>Não compram há mais de 60 dias (890 contatos)</span>
+                    </div>
+                    <input type="checkbox">
+                </label>
+            </div>
+
+            <button class="btn btn-success btn-block mt-4" id="btn-disparar">
+                <i class="ph ph-paper-plane-tilt"></i> Disparar Oferta Agora
+            </button>
+        </div>
+
+        <!-- PÁGINA 3: RELATÓRIO -->
+        <div id="page-3" class="view-page">
+            <div class="success-banner">
+                <i class="ph-fill ph-check-circle"></i>
+                <div>
+                    <strong>Disparo Concluído!</strong>
+                    <p>Sua oferta está sendo entregue.</p>
+                </div>
+            </div>
+
+            <h2 class="mt-4">Performance em Tempo Real</h2>
+            <p class="subtitle">Acompanhe as conversões dessa oferta.</p>
+
+            <div class="grid-2 mt-4">
+                <div class="stat-box">
+                    <i class="ph ph-paper-plane-right" style="color:var(--info);"></i>
+                    <div class="stat-value" id="stat-enviados">0</div>
+                    <div class="stat-label">Enviados</div>
+                </div>
+                <div class="stat-box">
+                    <i class="ph ph-cursor-click" style="color:var(--warning);"></i>
+                    <div class="stat-value" id="stat-cliques">0</div>
+                    <div class="stat-label">Cliques no Link</div>
+                </div>
+                <div class="stat-box">
+                    <i class="ph ph-shopping-bag" style="color:var(--primary);"></i>
+                    <div class="stat-value" id="stat-pedidos">0</div>
+                    <div class="stat-label">Pedidos Feitos</div>
+                </div>
+                <div class="stat-box">
+                    <i class="ph ph-currency-dollar" style="color:var(--success);"></i>
+                    <div class="stat-value" id="stat-vendas">R$ 0,00</div>
+                    <div class="stat-label">Vendas (R$)</div>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary btn-block mt-4" data-navigate="page-1">
+                <i class="ph ph-plus"></i> Nova Oferta
+            </button>
+        </div>
+
+        <a href="../../index.html" class="back-link-simple">Voltar ao site principal</a>
+    </div>
+
+    <!-- Shared JS -->
+    <script src="../shared.js"></script>
+    <!-- Specific JS -->
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedbackGo | Dellivery Aqui</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="view-container">
+        
+        <div class="header-nav">
+            <button class="btn btn-sm btn-ghost" data-navigate="page-3">Acesso Gestor</button>
+        </div>
+
+        <!-- PÁGINA 1: EMOJIS -->
+        <div id="page-1" class="view-page active text-center">
+            <div class="emoji-container">
+                <img src="../../assets/images/logo.png" alt="Logo" class="app-logo" style="margin: 0 auto 1rem; display: block;">
+                <h1>Como foi sua experiência?</h1>
+                <p class="subtitle">Toque no emoji para avaliar nosso atendimento.</p>
+                
+                <div class="emoji-grid mt-4">
+                    <button class="emoji-btn" data-value="triste">
+                        <span class="emoji">😞</span>
+                        <span class="label">Ruim</span>
+                    </button>
+                    <button class="emoji-btn" data-value="neutro">
+                        <span class="emoji">😐</span>
+                        <span class="label">Regular</span>
+                    </button>
+                    <button class="emoji-btn" data-value="feliz">
+                        <span class="emoji">😃</span>
+                        <span class="label">Excelente</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: O QUE MELHORAR? -->
+        <div id="page-2" class="view-page">
+            <div class="feedback-form mt-4">
+                <h2>O que podemos melhorar?</h2>
+                <p class="subtitle">Sua opinião é muito importante.</p>
+                
+                <div class="tag-grid mb-4">
+                    <button class="tag-btn">Rapidez</button>
+                    <button class="tag-btn">Sabor</button>
+                    <button class="tag-btn">Atendimento</button>
+                    <button class="tag-btn">Embalagem</button>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="feedback-text" rows="4" placeholder="Conta pra gente (opcional)..."></textarea>
+                </div>
+
+                <button class="btn btn-primary btn-block" id="btn-enviar-feedback">
+                    Enviar Avaliação
+                </button>
+                
+                <button class="btn btn-secondary btn-block mt-4" data-navigate="page-1">
+                    Pular
+                </button>
+            </div>
+            
+            <div id="feedback-success" class="selo-success hidden">
+                <div class="anim-star" style="color:var(--primary);"><i class="ph-fill ph-heart"></i></div>
+                <h3>Obrigado!</h3>
+                <p>Agradecemos muito pela sua avaliação.</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: DASHBOARD DO GESTOR -->
+        <div id="page-3" class="view-page">
+            <button class="btn-back" data-navigate="page-1"><i class="ph ph-arrow-left"></i> Voltar</button>
+
+            <header class="app-header mt-4">
+                <div class="icon" style="background:#fef3c7; color:#f59e0b;">
+                    <i class="ph ph-trend-up"></i>
+                </div>
+                <div>
+                    <h2>NPS Semanal</h2>
+                    <p>Resumo de satisfação dos últimos 7 dias</p>
+                </div>
+            </header>
+
+            <div class="nps-score-card text-center mb-4">
+                <div class="nps-number">82</div>
+                <div class="nps-label">Score de Satisfação (Zona de Excelência)</div>
+            </div>
+
+            <div class="grid-3 mb-4">
+                <div class="stat-box">
+                    <span class="emoji-small">😃</span>
+                    <strong>145</strong>
+                </div>
+                <div class="stat-box">
+                    <span class="emoji-small">😐</span>
+                    <strong>22</strong>
+                </div>
+                <div class="stat-box">
+                    <span class="emoji-small">😞</span>
+                    <strong>5</strong>
+                </div>
+            </div>
+
+            <h3 class="mb-4">Últimos Feedbacks</h3>
+            <div class="feedback-list">
+                <div class="feedback-row">
+                    <div class="f-emoji">😃</div>
+                    <div class="f-content">
+                        <strong>"Chegou super rápido e quentinho!"</strong>
+                        <span>Rapidez • Há 1 hora</span>
+                    </div>
+                </div>
+                <div class="feedback-row">
+                    <div class="f-emoji">😞</div>
+                    <div class="f-content">
+                        <strong>"Faltou o molho extra que pedi."</strong>
+                        <span>Atendimento • Há 3 horas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../index.html" class="back-link-simple">Voltar ao site principal</a>
+    </div>
+
+    <script src="../shared.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

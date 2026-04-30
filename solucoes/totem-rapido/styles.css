@@ -1,0 +1,188 @@
+/* totem-rapido/styles.css */
+
+.totem-body {
+    /* Totem is usually full screen, touch friendly */
+    background-color: #f1f5f9;
+}
+
+.totem-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: var(--shadow-lg);
+}
+
+.totem-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.totem-header h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.totem-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.category-btn {
+    background: #fff;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.category-btn:active {
+    transform: scale(0.96);
+}
+
+.category-btn h3 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.cat-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+.input-lg {
+    font-size: 1.25rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.payment-btn input[type="radio"] {
+    display: none;
+}
+
+.pay-content {
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem 0.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.pay-content i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.pay-content span {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.payment-btn input[type="radio"]:checked + .pay-content {
+    border-color: var(--primary);
+    background: rgba(79, 70, 229, 0.05);
+}
+
+.totem-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem;
+    background: #fff;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.total-box {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.total-box strong {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.btn-huge {
+    width: 100%;
+    font-size: 1.25rem;
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+}
+
+.status-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.icon-success i {
+    font-size: 6rem;
+    color: var(--success);
+}
+
+.senha-box {
+    background: var(--bg-input);
+    padding: 2rem 4rem;
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--border);
+}
+
+.senha-box span {
+    display: block;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.senha-box strong {
+    display: block;
+    font-size: 5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+.btn-back {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0;
+    margin-top: -1rem;
+}

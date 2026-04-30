@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel KDS Lite | Dellivery Aqui</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="kds-body">
+    <div class="view-container kds-container">
+        
+        <header class="kds-header">
+            <div style="display:flex; align-items:center; gap:1rem;">
+                <img src="../../assets/images/logo.png" alt="Logo" class="app-logo">
+                <div>
+                    <h1>KDS Lite</h1>
+                    <span class="live-badge"><span class="dot"></span> Ao Vivo</span>
+                </div>
+            </div>
+            <div class="kds-tabs">
+                <button class="kds-tab active" data-navigate="page-1">Em Preparo (3)</button>
+                <button class="kds-tab" data-navigate="page-2">Prontos (2)</button>
+                <button class="kds-tab icon-tab" data-navigate="page-3"><i class="ph ph-chart-line-up"></i></button>
+            </div>
+        </header>
+
+        <!-- PÁGINA 1: PEDIDOS ATIVOS -->
+        <div id="page-1" class="view-page kds-page active">
+            <div class="order-grid">
+                
+                <!-- Pedido Atrasado -->
+                <div class="order-card late">
+                    <div class="o-header">
+                        <span class="o-id">#1042</span>
+                        <div class="o-timer"><i class="ph ph-timer"></i> 22:45</div>
+                    </div>
+                    <div class="o-client">Mesa 04 • João</div>
+                    <ul class="o-items">
+                        <li><strong>1x</strong> Hambúrguer Duplo (Sem cebola)</li>
+                        <li><strong>1x</strong> Batata Frita Média</li>
+                    </ul>
+                    <button class="btn btn-block btn-kds-action mt-auto"><i class="ph ph-check"></i> Marcar Pronto</button>
+                </div>
+
+                <!-- Pedido Atenção -->
+                <div class="order-card warning">
+                    <div class="o-header">
+                        <span class="o-id">#1043</span>
+                        <div class="o-timer"><i class="ph ph-timer"></i> 14:10</div>
+                    </div>
+                    <div class="o-client">Delivery • iFood</div>
+                    <ul class="o-items">
+                        <li><strong>1x</strong> Pizza Marguerita Grande</li>
+                        <li><strong>1x</strong> Coca-Cola 2L</li>
+                    </ul>
+                    <button class="btn btn-block btn-kds-action mt-auto"><i class="ph ph-check"></i> Marcar Pronto</button>
+                </div>
+
+                <!-- Pedido Novo -->
+                <div class="order-card">
+                    <div class="o-header">
+                        <span class="o-id">#1044</span>
+                        <div class="o-timer"><i class="ph ph-timer"></i> 02:15</div>
+                    </div>
+                    <div class="o-client">Balcão • Maria</div>
+                    <ul class="o-items">
+                        <li><strong>2x</strong> Açaí 500ml</li>
+                        <li class="obs">- Adicional de Morango</li>
+                        <li class="obs">- Leite Condensado à parte</li>
+                    </ul>
+                    <button class="btn btn-block btn-kds-action mt-auto"><i class="ph ph-check"></i> Marcar Pronto</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: PRONTOS -->
+        <div id="page-2" class="view-page kds-page">
+            <div class="ready-list">
+                <div class="ready-item">
+                    <div class="r-info">
+                        <h2>#1039</h2>
+                        <span>Mesa 02</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm"><i class="ph ph-x"></i> Entregue</button>
+                </div>
+                
+                <div class="ready-item">
+                    <div class="r-info">
+                        <h2>#1040</h2>
+                        <span>Delivery (Motoboy: Carlos)</span>
+                    </div>
+                    <button class="btn btn-outline btn-sm"><i class="ph ph-x"></i> Despachado</button>
+                </div>
+            </div>
+            
+            <div class="empty-state hidden">
+                <i class="ph ph-check-circle" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+                <p>Nenhum pedido aguardando retirada.</p>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: MÉTRICAS -->
+        <div id="page-3" class="view-page kds-page">
+            <div class="grid-2 mt-4">
+                <div class="stat-box">
+                    <i class="ph ph-clock" style="color:var(--primary);"></i>
+                    <div class="stat-value">12m 40s</div>
+                    <div class="stat-label">Tempo Médio (Hoje)</div>
+                </div>
+                <div class="stat-box">
+                    <i class="ph ph-check-square-offset" style="color:var(--success);"></i>
+                    <div class="stat-value">48</div>
+                    <div class="stat-label">Pedidos Concluídos</div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <h3>Performance por Hora</h3>
+                <div class="bar-chart mt-4">
+                    <div class="bar-row">
+                        <span class="bar-label">11:00</span>
+                        <div class="bar-track"><div class="bar-fill" style="width: 40%; background: var(--info);"></div></div>
+                        <span class="bar-val">12 ped.</span>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">12:00</span>
+                        <div class="bar-track"><div class="bar-fill" style="width: 80%; background: var(--primary);"></div></div>
+                        <span class="bar-val">28 ped.</span>
+                    </div>
+                    <div class="bar-row">
+                        <span class="bar-label">13:00</span>
+                        <div class="bar-track"><div class="bar-fill" style="width: 30%; background: var(--info);"></div></div>
+                        <span class="bar-val">8 ped.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="../../index.html" class="back-link-simple" style="margin-bottom: 2rem;">Voltar ao site principal</a>
+    </div>
+
+    <script src="../shared.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

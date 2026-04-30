@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrandCores | Dellivery Aqui</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="view-container">
+        
+        <!-- PÁGINA 1: CORES -->
+        <div id="page-1" class="view-page active">
+            <header class="app-header">
+                <img src="../../assets/images/logo.png" alt="Logo" class="app-logo">
+                <div class="icon" style="background:#e0e7ff; color:#4f46e5;">
+                    <i class="ph ph-palette"></i>
+                </div>
+                <div>
+                    <h1>BrandCores</h1>
+                    <p>Personalize as cores do seu Delivery.</p>
+                </div>
+            </header>
+
+            <div class="card mt-4">
+                <div class="form-group">
+                    <label>Cor Primária</label>
+                    <p class="subtitle" style="margin-bottom:0.5rem;">Usada em botões principais e destaques.</p>
+                    <div class="color-picker-row">
+                        <input type="color" id="color-primary" value="#4f46e5">
+                        <input type="text" id="hex-primary" value="#4f46e5" readonly class="hex-input">
+                    </div>
+                    <div class="color-presets mt-4">
+                        <button class="preset-btn" style="background:#4f46e5;" data-color="#4f46e5"></button>
+                        <button class="preset-btn" style="background:#dc2626;" data-color="#dc2626"></button>
+                        <button class="preset-btn" style="background:#ea580c;" data-color="#ea580c"></button>
+                        <button class="preset-btn" style="background:#16a34a;" data-color="#16a34a"></button>
+                        <button class="preset-btn" style="background:#000000;" data-color="#000000"></button>
+                    </div>
+                </div>
+                
+                <hr class="divider">
+
+                <div class="form-group">
+                    <label>Cor Secundária</label>
+                    <p class="subtitle" style="margin-bottom:0.5rem;">Usada em fundos sutis e detalhes.</p>
+                    <div class="color-picker-row">
+                        <input type="color" id="color-secondary" value="#ec4899">
+                        <input type="text" id="hex-secondary" value="#ec4899" readonly class="hex-input">
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-block mt-4" data-navigate="page-2">
+                    Avançar para Logo <i class="ph ph-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: LOGO E BANNER -->
+        <div id="page-2" class="view-page">
+            <button class="btn-back" data-navigate="page-1"><i class="ph ph-arrow-left"></i> Voltar</button>
+
+            <h2 class="mt-4">Sua Marca</h2>
+            <p class="subtitle">Adicione as imagens principais da loja.</p>
+
+            <div class="card mt-4">
+                <div class="form-group">
+                    <label>Logotipo</label>
+                    <div class="upload-area">
+                        <i class="ph ph-image"></i>
+                        <p>Arraste uma imagem ou clique para enviar</p>
+                        <span>Tamanho ideal: 400x400px (PNG transparente)</span>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label>Banner Principal</label>
+                    <div class="upload-area banner-area">
+                        <i class="ph ph-image-square"></i>
+                        <p>Banner do topo da loja</p>
+                        <span>Tamanho ideal: 1200x400px</span>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-block mt-4" data-navigate="page-3" id="btn-preview">
+                    Ver Preview da Loja <i class="ph ph-eye"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: PREVIEW -->
+        <div id="page-3" class="view-page">
+            <button class="btn-back" data-navigate="page-2"><i class="ph ph-arrow-left"></i> Voltar</button>
+
+            <h2 class="mt-4">Preview em Tempo Real</h2>
+            <p class="subtitle">É assim que seus clientes verão.</p>
+
+            <div class="mockup-phone mt-4">
+                <div class="m-header" id="mockup-header">
+                    <div class="m-nav">
+                        <i class="ph ph-list"></i>
+                        <div class="m-logo-circle">Logo</div>
+                        <i class="ph ph-shopping-cart"></i>
+                    </div>
+                </div>
+                <div class="m-banner" id="mockup-banner">
+                    Banner Promocional
+                </div>
+                <div class="m-body">
+                    <div class="m-title">Mais Vendidos</div>
+                    <div class="m-item">
+                        <div class="m-item-img"></div>
+                        <div class="m-item-info">
+                            <div class="m-line" style="width: 70%;"></div>
+                            <div class="m-line" style="width: 40%;"></div>
+                            <div class="m-btn" id="mockup-btn1">Adicionar</div>
+                        </div>
+                    </div>
+                    <div class="m-item">
+                        <div class="m-item-img"></div>
+                        <div class="m-item-info">
+                            <div class="m-line" style="width: 80%;"></div>
+                            <div class="m-line" style="width: 50%;"></div>
+                            <div class="m-btn" id="mockup-btn2">Adicionar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-success btn-block mt-4" id="btn-salvar-tema">
+                <i class="ph ph-check-circle"></i> Publicar Tema
+            </button>
+        </div>
+
+        <a href="../../index.html" class="back-link-simple">Voltar ao site principal</a>
+    </div>
+
+    <!-- Modal Success -->
+    <div class="success-overlay hidden" id="success-overlay">
+        <div class="selo-success">
+            <div class="anim-star"><i class="ph-fill ph-check-circle" style="color:var(--success);"></i></div>
+            <h3>Tema Atualizado!</h3>
+            <p>Seu app e site já estão com a nova cara.</p>
+            <button class="btn btn-outline btn-block mt-4" onclick="document.getElementById('success-overlay').classList.add('hidden')">Fechar</button>
+        </div>
+    </div>
+
+    <script src="../shared.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

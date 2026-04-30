@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Totem Rápido | Dellivery Aqui</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="totem-body">
+    <div class="view-container totem-container">
+        
+        <!-- PÁGINA 1: MENU -->
+        <div id="page-1" class="view-page active">
+            <header class="text-center mb-4">
+                <img src="../../assets/images/logo.png" style="width: 80px; height: 80px; margin-bottom: 0.5rem; object-fit: contain;" alt="Dellivery Aqui">
+                <h1>Faça seu Pedido</h1>
+                <p class="subtitle">Toque na categoria desejada</p>
+            </header>
+
+            <div class="categories-grid mt-4">
+                <button class="category-btn" data-navigate="page-2">
+                    <div class="cat-icon" style="background:#fef3c7; color:#d97706;"><i class="ph-fill ph-hamburger"></i></div>
+                    <h3>Lanches</h3>
+                </button>
+                <button class="category-btn" data-navigate="page-2">
+                    <div class="cat-icon" style="background:#fee2e2; color:#ef4444;"><i class="ph-fill ph-pizza"></i></div>
+                    <h3>Pizzas</h3>
+                </button>
+                <button class="category-btn" data-navigate="page-2">
+                    <div class="cat-icon" style="background:#e0f2fe; color:#0ea5e9;"><i class="ph-fill ph-martini"></i></div>
+                    <h3>Bebidas</h3>
+                </button>
+                <button class="category-btn" data-navigate="page-2">
+                    <div class="cat-icon" style="background:#fce7f3; color:#db2777;"><i class="ph-fill ph-ice-cream"></i></div>
+                    <h3>Sobremesas</h3>
+                </button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 2: CHECKOUT -->
+        <div id="page-2" class="view-page">
+            <button class="btn-back" data-navigate="page-1"><i class="ph ph-arrow-left"></i> Voltar</button>
+            
+            <header class="totem-header mt-4">
+                <h2>Checkout</h2>
+                <p>Como vamos te chamar?</p>
+            </header>
+
+            <div class="form-group mt-4">
+                <input type="text" id="cliente-nome" placeholder="Seu nome" class="input-lg">
+            </div>
+
+            <h3 class="mt-4 mb-4">Forma de Pagamento</h3>
+            
+            <div class="payment-grid">
+                <label class="payment-btn">
+                    <input type="radio" name="pagamento" value="pix" checked>
+                    <div class="pay-content">
+                        <i class="ph ph-qr-code" style="color:#10b981;"></i>
+                        <span>Pix</span>
+                    </div>
+                </label>
+                <label class="payment-btn">
+                    <input type="radio" name="pagamento" value="cartao">
+                    <div class="pay-content">
+                        <i class="ph ph-credit-card" style="color:#3b82f6;"></i>
+                        <span>Cartão</span>
+                    </div>
+                </label>
+                <label class="payment-btn">
+                    <input type="radio" name="pagamento" value="dinheiro">
+                    <div class="pay-content">
+                        <i class="ph ph-money" style="color:#f59e0b;"></i>
+                        <span>Dinheiro</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="totem-footer">
+                <div class="total-box">Total: <strong>R$ 38,90</strong></div>
+                <button class="btn btn-primary btn-huge" id="btn-finalizar">Finalizar Pedido</button>
+            </div>
+        </div>
+
+        <!-- PÁGINA 3: STATUS -->
+        <div id="page-3" class="view-page text-center">
+            <div class="status-content">
+                <div class="icon-success mb-4">
+                    <i class="ph-fill ph-check-circle"></i>
+                </div>
+                <h2>Pedido Recebido!</h2>
+                <p>Aguarde ser chamado pelo painel.</p>
+                
+                <div class="senha-box mt-4">
+                    <span>Sua Senha</span>
+                    <strong id="senha-numero">042</strong>
+                </div>
+
+                <button class="btn btn-secondary mt-4" data-navigate="page-1">
+                    Novo Pedido
+                </button>
+            </div>
+        </div>
+
+        <a href="../../index.html" class="back-link-simple">Voltar ao site principal</a>
+    </div>
+
+    <script src="../shared.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

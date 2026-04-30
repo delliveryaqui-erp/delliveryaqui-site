@@ -73,6 +73,34 @@ nav.scrolled { box-shadow: 0 4px 40px rgba(230,115,0,0.12); }
 }
 .nav-links a:hover { color: var(--orange-500); }
 
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; left: -20px;
+  background-color: var(--cream);
+  min-width: 180px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  z-index: 1000;
+  padding: 8px 0;
+  border: 1px solid var(--orange-100);
+}
+.dropdown-content a {
+  padding: 10px 20px;
+  display: block;
+}
+.dropdown-content a:hover {
+  background-color: var(--orange-50);
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+  animation: fadeUp 0.2s ease;
+}
+
 .nav-cta {
   background: var(--orange-500);
   color: white !important;
