@@ -1,4 +1,18 @@
 /* kds-lite/styles.css */
+:root {
+    --primary: #1e3a8a; /* Navy Blue Profissional */
+    --primary-dark: #1e1b4b;
+    --font-app: 'Red Hat Display', sans-serif;
+}
+
+body {
+    font-family: var(--font-app) !important;
+}
+
+h1, h2, h3, strong {
+    font-family: var(--font-app);
+    font-weight: 800;
+}
 
 .kds-body {
     background-color: #1e293b; /* Tema escuro para não cansar os olhos na cozinha */
@@ -11,12 +25,12 @@
 }
 
 .kds-header {
-    background: #0f172a;
-    padding: 1rem 1.5rem;
+    background: #020617;
+    padding: 1.25rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #334155;
+    border-bottom: 2px solid #1e293b;
     z-index: 20;
 }
 
@@ -92,17 +106,23 @@
 }
 
 .order-card {
-    background: #f8fafc;
+    background: #fff;
     color: #0f172a;
-    border-radius: var(--radius-lg);
-    padding: 1rem;
+    border-radius: 24px;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    min-height: 250px;
-    border-top: 6px solid #10b981; /* Default: Normal (Green) */
-    box-shadow: var(--shadow-sm);
-    transition: all 0.3s;
+    min-height: 300px;
+    border-top: 10px solid #22c55e;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
 }
+
+.order-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 30px -5px rgba(0,0,0,0.3);
+}
+
 
 .order-card.warning {
     border-top-color: #f59e0b; /* Yellow */
@@ -174,16 +194,20 @@
 .mt-auto { margin-top: auto; }
 
 .btn-kds-action {
-    background: #e2e8f0;
-    color: #0f172a;
-    font-size: 1.1rem;
-    padding: 1rem;
-    border-radius: var(--radius);
+    background: #f1f5f9;
+    color: var(--primary-dark);
+    font-size: 1.15rem;
+    font-weight: 700;
+    padding: 1.25rem;
+    border-radius: 16px;
+    border: none;
+    transition: all 0.2s;
 }
 
 .btn-kds-action:hover {
-    background: #10b981;
+    background: var(--primary);
     color: #fff;
+    transform: scale(1.02);
 }
 
 /* Prontos List */

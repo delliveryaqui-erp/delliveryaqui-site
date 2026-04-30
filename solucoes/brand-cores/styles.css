@@ -1,4 +1,20 @@
 /* brand-cores/styles.css */
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --font-app: 'Manrope', sans-serif;
+}
+
+body {
+    font-family: var(--font-app) !important;
+    background-color: #fafafa;
+}
+
+h1, h2, h3, strong {
+    font-family: var(--font-app);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
 
 .btn-back {
     background: transparent;
@@ -23,12 +39,13 @@
 input[type="color"] {
     -webkit-appearance: none;
     border: none;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
     cursor: pointer;
     padding: 0;
     overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
 }
 
 input[type="color"]::-webkit-color-swatch-wrapper {
@@ -36,8 +53,8 @@ input[type="color"]::-webkit-color-swatch-wrapper {
 }
 
 input[type="color"]::-webkit-color-swatch {
-    border: 2px solid var(--border);
-    border-radius: 50%;
+    border: none;
+    border-radius: 20px;
 }
 
 .hex-input {
@@ -74,18 +91,19 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .upload-area {
-    border: 2px dashed var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
+    border: 2px dashed #cbd5e1;
+    border-radius: 24px;
+    padding: 3rem 2rem;
     text-align: center;
-    background: var(--bg-input);
+    background: #fff;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .upload-area:hover {
     border-color: var(--primary);
-    background: rgba(79, 70, 229, 0.05);
+    background: #f5f3ff;
+    transform: translateY(-2px);
 }
 
 .upload-area i {
@@ -123,10 +141,10 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .m-header {
-    background: #4f46e5;
+    background: var(--primary);
     color: #fff;
-    padding: 1.5rem 1rem 1rem 1rem;
-    transition: background 0.3s;
+    padding: 2rem 1.25rem 1.25rem 1.25rem;
+    transition: all 0.4s ease;
 }
 
 .m-nav {
@@ -136,16 +154,17 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .m-logo-circle {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background: #fff;
-    color: #000;
-    border-radius: 50%;
+    color: var(--primary);
+    border-radius: 12px; /* Logo Quadrada Arredondada */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.6rem;
-    font-weight: 700;
+    font-size: 0.7rem;
+    font-weight: 800;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .m-banner {

@@ -1,4 +1,19 @@
 /* vitrine-smart/styles.css */
+:root {
+    --primary: #f43f5e; /* Rose vibrante */
+    --primary-dark: #e11d48;
+    --font-app: 'Urbanist', sans-serif;
+}
+
+body {
+    font-family: var(--font-app) !important;
+    background-color: #fdfdfd;
+}
+
+h1, h2, h3, strong {
+    font-family: var(--font-app);
+    font-weight: 800;
+}
 
 .btn-back {
     background: transparent;
@@ -35,8 +50,8 @@
 
 .layout-btn:hover {
     border-color: var(--primary);
-    box-shadow: var(--shadow-sm);
-    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(244, 63, 94, 0.2);
+    transform: translateY(-4px) scale(1.02);
 }
 
 .layout-btn span {
@@ -97,11 +112,12 @@
 .ai-box {
     display: flex;
     align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem;
-    background: linear-gradient(to right, rgba(236, 72, 153, 0.1), rgba(79, 70, 229, 0.1));
-    border-radius: var(--radius);
-    border: 1px solid rgba(236, 72, 153, 0.2);
+    gap: 1.25rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(245, 158, 11, 0.1));
+    border-radius: 20px;
+    border: 1px solid rgba(244, 63, 94, 0.2);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 .ai-box i {
@@ -133,16 +149,16 @@
 }
 
 .bp-content {
-    background: linear-gradient(135deg, #1e293b, #0f172a);
+    background: linear-gradient(135deg, #f43f5e, #fb923c);
     width: 100%;
     max-width: 400px;
-    border-radius: var(--radius);
-    padding: 1.5rem;
+    border-radius: 24px;
+    padding: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: #fff;
-    box-shadow: var(--shadow);
+    box-shadow: 0 25px 50px -12px rgba(244, 63, 94, 0.4);
     overflow: hidden;
     position: relative;
 }

@@ -1,19 +1,68 @@
-/* feedback-go/styles.css */
+:root {
+    --primary: #8b5cf6; /* Roxo vibrante */
+    --primary-dark: #7c3aed;
+    --accent: #ec4899; /* Rosa vibrante */
+    --font-app: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    font-family: var(--font-app) !important;
+    background-color: #fafafa;
+}
+
+h1, h2, h3, strong {
+    font-family: var(--font-app);
+    font-weight: 800;
+}
+
+.app-logo {
+    width: 150px !important;
+    height: 150px !important;
+    object-fit: contain;
+    margin-bottom: 2rem !important;
+}
+
 
 .header-nav {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 100;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent)) !important;
+    border: none !important;
+    box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3);
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px rgba(139, 92, 246, 0.4);
 }
 
 .btn-ghost {
-    background: transparent;
+    background: #fff;
     color: var(--text-muted);
-    border: none;
-    font-size: 0.8rem;
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
     cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
+
+.btn-ghost:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(139, 92, 246, 0.1);
+}
+
 
 .emoji-container {
     display: flex;
@@ -24,8 +73,9 @@
 }
 
 .emoji-container h1 {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 800;
+    letter-spacing: -0.02em;
 }
 
 .emoji-container .subtitle {
@@ -58,8 +108,13 @@
 }
 
 .emoji-btn .emoji {
-    font-size: 5rem;
+    font-size: 5.5rem;
     line-height: 1;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.emoji-btn:hover .emoji {
+    transform: scale(1.15) rotate(5deg);
 }
 
 .emoji-btn .label {
@@ -79,11 +134,11 @@
 }
 
 .tag-btn {
-    background: var(--bg-input);
+    background: #fff;
     border: 1px solid var(--border);
     color: var(--text-main);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+    padding: 0.6rem 1.25rem;
+    border-radius: 100px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s;
@@ -97,12 +152,13 @@
 
 .selo-success {
     text-align: center;
-    padding: 2rem;
-    background: var(--bg-card);
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
+    padding: 3rem 2rem;
+    background: #fff;
+    border-radius: 32px;
+    border: none;
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
     margin-top: 1.5rem;
-    animation: slideUp 0.3s ease;
+    animation: slideUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .selo-success.hidden {
@@ -142,11 +198,11 @@
 }
 
 .nps-score-card {
-    background: var(--bg-card);
+    background: #fff;
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    box-shadow: var(--shadow-sm);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
 }
 
 .nps-number {
